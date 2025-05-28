@@ -8,25 +8,25 @@ import json
 app = FastAPI(title="Disease Prediction API", description="API untuk memprediksi penyakit berdasarkan gejala", version="1.0")
 
 # Muat daftar gejala dari file JSON
-with open("models/bone_symptoms.json", "r") as f:
+with open("models/bone/bone_symptoms.json", "r") as f:
     bone_symptoms = json.load(f)
-with open("models/digestive_symptoms.json", "r") as f:
+with open("models/digestive/digestive_symptoms.json", "r") as f:
     digestive_symptoms = json.load(f)
-with open("models/skin_symptoms.json", "r") as f:
+with open("models/skin/skin_symptoms.json", "r") as f:
     skin_symptoms = json.load(f)
-with open("models/general_symptoms.json", "r") as f:
+with open("models/general/general_symptoms.json", "r") as f:
     general_symptoms = json.load(f)
 
 # Muat model dan label encoder
-bone_model = tf.keras.models.load_model("models/bone_disease_model.h5")
-digestive_model = tf.keras.models.load_model("models/digestive_disease_model.h5")
-skin_model = tf.keras.models.load_model("models/skin_disease_model.h5")
-general_model = tf.keras.models.load_model("models/general_disease_model.h5")
+bone_model = tf.keras.models.load_model("models/bone/bone_disease_model.h5")
+digestive_model = tf.keras.models.load_model("models/digestive/digestive_disease_model.h5")
+skin_model = tf.keras.models.load_model("models/skin/skin_disease_model.h5")
+general_model = tf.keras.models.load_model("models/general/general_disease_model.h5")
 
-bone_le = joblib.load("models/bone_label_encoder.pkl")
-digestive_le = joblib.load("models/digestive_label_encoder.pkl")
-skin_le = joblib.load("models/skin_label_encoder.pkl")
-general_le = joblib.load("models/general_label_encoder.pkl")
+bone_le = joblib.load("models/bone/bone_label_encoder.pkl")
+digestive_le = joblib.load("models/digestive/digestive_label_encoder.pkl")
+skin_le = joblib.load("models/skin/skin_label_encoder.pkl")
+general_le = joblib.load("models/general/general_label_encoder.pkl")
 
 # Struktur input
 class Symptoms(BaseModel):
