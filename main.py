@@ -4,69 +4,34 @@ import tensorflow as tf
 import joblib
 import numpy as np
 import json
-import logging
-import os
-
-# Konfigurasi logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-# Debugging: Cetak direktori kerja dan daftar file
-logger.info(f"Current working directory: {os.getcwd()}")
-try:
-    logger.info(f"Files in current directory: {os.listdir('.')}")
-    logger.info(f"Files in models directory: {os.listdir('models')}")
-except Exception as e:
-    logger.error(f"Error listing directories: {str(e)}")
 
 app = FastAPI(title="Disease Prediction API", description="API untuk memprediksi penyakit berdasarkan gejala", version="1.0")
 
-# Fungsi untuk memuat gejala dari JSON
-def load_symptoms(dataset_name):
-    path = os.path.join("models", dataset_name)
-    logger.info(f"Attempting to load symptoms from: {path}")
-    if not os.path.isfile(path):
-        logger.error(f"File not found: {path}")
-        raise FileNotFoundError(f"File not found: {path}")
-    with open(path, "r") as f:
-        return json.load(f)
-
-# Muat gejala
-try:
-    bone_symptoms = load_symptoms("bone")
-    digestive_symptoms = load_symptoms("digestive")
-    skin_symptoms = load_symptoms("skin")
-    general_symptoms = load_symptoms("general")
-    logger.info("All symptom files loaded successfully")
-except Exception as e:
-    logger.error(f"Error loading symptoms: {str(e)}")
-    raise
+# Muat daftar gejala dari file JSON
+with open("models/bone/bone_symptoms.json", "r") as f:
+    bone_symptoms = json.load(f)
+with open("models/digestive/digestive_symptoms.json", "r") as f:
+    digestive_symptoms = json.load(f)
+with open("models/skin/skin_symptoms.json", "r") as f:
+    skin_symptoms = json.load(f)
+with open("models/general/general_symptoms.json", "r") as f:
+    general_symptoms = json.load(f)
 
 # Muat model dan label encoder
-try:
-    bone_model = tf.keras.models.load_model(os.path.join("models", "bone", "bone_disease_model.h5"))
-    digestive_model = tf.keras.models.load_model(os.path.join("models", "digestive", "digestive_disease_model.h5"))
-    skin_model = tf.keras.models.load_model(os.path.join("models", "skin", "skin_disease_model.h5"))
-    general_model = tf.keras.models.load_model(os.path.join("models", "general", "general_disease_model.h5"))
-    logger.info("All models loaded successfully")
-except Exception as e:
-    logger.error(f"Error loading models: {str(e)}")
-    raise
+bone_model = tf.keras.models.load_model("models/bone/bone_disease_model.h5")
+digestive_model = tf.keras.models.load_model("models/digestive/digestive_disease_model.h5")
+skin_model = tf.keras.models.load_model("models/skin/skin_disease_model.h5")
+general_model = tf.keras.models.load_model("models/general/general_disease_model.h5")
 
-try:
-    bone_le = joblib.load(os.path.join("models", "bone", "bone_label_encoder.pkl"))
-    digestive_le = joblib.load(os.path.join("models", "digestive", "digestive_label_encoder.pkl"))
-    skin_le = joblib.load(os.path.join("models", "skin", "skin_label_encoder.pkl"))
-    general_le = joblib.load(os.path.join("models", "general", "general_label_encoder.pkl"))
-    logger.info("All label encoders loaded successfully")
-except Exception as e:
-    logger.error(f"Error loading label encoders: {str(e)}")
-    raise
+bone_le = joblib.load("models/bone/bone_label_encoder.pkl")
+digestive_le = joblib.load("models/digestive/digestive_label_encoder.pkl")
+skin_le = joblib.load("models/skin/skin_label_encoder.pkl")
+general_le = joblib.load("models/general/general_label_encoder.pkl")
 
 # Struktur input
 class Symptoms(BaseModel):
     symptoms: list
-    model_type: str  # String: 'bone', 'digestive', 'skin', atau 'general'
+    model_type: str  # Pilih model: 'bone', 'digestive', 'skin', atau 'general'
 
 # Fungsi untuk mengubah gejala menjadi vektor
 def symptoms_to_vector(symptoms, all_symptoms):
@@ -79,11 +44,7 @@ def symptoms_to_vector(symptoms, all_symptoms):
 # Endpoint utama
 @app.get("/")
 def home():
-    try:
-        return {"message": "Selamat datang di Disease Prediction API 🚀"}
-    except Exception as e:
-        logger.error(f"Error in home endpoint: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+    return {"message": "Selamat datang di Disease Prediction API 🚀"}
 
 # Endpoint untuk prediksi
 @app.post("/predict")
@@ -128,5 +89,4 @@ def predict_disease(request: Symptoms):
             "probabilities": prob_dict
         }
     except Exception as e:
-        logger.error(f"Error during prediction: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
