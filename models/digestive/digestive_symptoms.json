@@ -1,16 +1,17 @@
-[
-    "cough",
-    "ulcers_on_tongue",
-    "loss_of_appetite",
-    "passage_of_gases",
-    "sunken_eyes",
-    "vomiting",
-    "abdominal_pain",
-    "acidity",
-    "indigestion",
-    "dehydration",
-    "stomach_pain",
-    "chest_pain",
-    "internal_itching",
-    "diarrhoea"
-]
+{
+  "batuk": "cough",
+  "luka pada lidah": "ulcers_on_tongue",
+  "kehilangan nafsu makan": "loss_of_appetite",
+  "kentut berlebihan": "passage_of_gases",
+  "mata cekung": "sunken_eyes",
+  "muntah": "vomiting",
+  "nyeri perut": "abdominal_pain",
+  "asam lambung": "acidity",
+  "gangguan pencernaan": "indigestion",
+  "dehidrasi": "dehydration",
+  "nyeri lambung": "stomach_pain",
+  "nyeri dada": "chest_pain",
+  "gatal di dalam": "internal_itching",
+  "diare": "diarrhoea"
+}
+    
