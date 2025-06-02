@@ -1,15 +1,15 @@
-[
-    "hip_joint_pain",
-    "movement_stiffness",
-    "swelling_joints",
-    "muscle_weakness",
-    "loss_of_balance",
-    "weakness_in_limbs",
-    "joint_pain",
-    "stiff_neck",
-    "knee_pain",
-    "back_pain",
-    "painful_walking",
-    "dizziness",
-    "neck_pain"
-]
+{
+  "nyeri sendi panggul": "hip_joint_pain",
+  "kekakuan gerakan": "movement_stiffness",
+  "pembengkakan sendi": "swelling_joints",
+  "kelemahan otot": "muscle_weakness",
+  "kehilangan keseimbangan": "loss_of_balance",
+  "kelemahan pada anggota tubuh": "weakness_in_limbs",
+  "nyeri sendi": "joint_pain",
+  "leher kaku": "stiff_neck",
+  "nyeri lutut": "knee_pain",
+  "nyeri punggung": "back_pain",
+  "nyeri saat berjalan": "painful_walking",
+  "pusing": "dizziness",
+  "nyeri leher": "neck_pain"
+}
