@@ -21,5 +21,15 @@ def load_model_components(base_path: str, model_type: str) -> Tuple:
     symptoms_keys = list(symptoms_dict.keys())
     return model, label_encoder, symptoms_dict, symptoms_keys
 
-def symptoms_to_vector(symptoms: list, all_symptoms: list):
-    return [[1 if symptom in symptoms else 0 for symptom in all_symptoms]]
+def symptoms_to_vector(selected_symptoms, all_symptoms):
+    # Membuat vektor binary dengan panjang sama seperti total gejala (all_symptoms)
+    vector = [0] * len(all_symptoms)
+    
+    # Menandai posisi gejala yang dipilih user dengan 1
+    for symptom in selected_symptoms:
+        if symptom in all_symptoms:
+            idx = all_symptoms.index(symptom)
+            vector[idx] = 1
+            
+    # Return dalam bentuk list of list (karena biasanya input model berbentuk batch)
+    return [vector]
