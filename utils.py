@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 import tensorflow as tf
 import joblib
 import json
@@ -22,14 +23,35 @@ def load_model_components(base_path: str, model_type: str) -> Tuple:
     return model, label_encoder, symptoms_dict, symptoms_keys
 
 def symptoms_to_vector(selected_symptoms, all_symptoms):
-    # Membuat vektor binary dengan panjang sama seperti total gejala (all_symptoms)
+    # Membuat vektor biner panjangnya sama dengan jumlah gejala keseluruhan
     vector = [0] * len(all_symptoms)
-    
-    # Menandai posisi gejala yang dipilih user dengan 1
+    not_found = []
+
+    # Menandai posisi gejala yang dipilih dengan 1 dan mencatat gejala yang tidak ditemukan
     for symptom in selected_symptoms:
         if symptom in all_symptoms:
             idx = all_symptoms.index(symptom)
             vector[idx] = 1
-            
-    # Return dalam bentuk list of list (karena biasanya input model berbentuk batch)
+        else:
+            not_found.append(symptom)
+
+    # Jika ada gejala yang tidak dikenal, memberi peringatan di log
+    if not_found:
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.warning(f"Gejala tidak ditemukan dalam daftar model: {not_found}")
+    
+    # mengembalikan vektor dalam bentuk list 
     return [vector]
+
+def load_disease_info(data_path="data"):
+    # Path file CSV untuk deskripsi gejala dan tindakan pencegahan
+    desc_path = os.path.join(data_path, "symptom_description.csv")
+    precaution_path = os.path.join(data_path, "symptom_precaution.csv")
+    
+    # Membaca CSV ke dataframe pandas
+    description_df = pd.read_csv(desc_path)
+    precaution_df = pd.read_csv(precaution_path)
+    
+    # Mengembalikan dua dataframe
+    return description_df, precaution_df
