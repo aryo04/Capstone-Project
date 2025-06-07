@@ -1,9 +1,11 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from utils import load_model_components, symptoms_to_vector, load_disease_info
 import numpy as np
 import logging
 import pandas as pd
+import os
 
 # Memanggil fungsi load_disease_info untuk membaca data deskripsi gejala dan tindakan pencegahan
 description_df, precaution_df = load_disease_info()
@@ -14,6 +16,21 @@ logger = logging.getLogger(__name__)
 
 # Inisialisasi FastAPI dengan metadata dasar
 app = FastAPI(title="Disease Prediction API", description="API prediksi penyakit berdasarkan gejala", version="1.0")
+
+# Dynamic CORS configuration (allow specific origins)
+origins = [
+    "http://localhost:3000",  # Allow local development
+    "https://diagnosmart-a5d59.web.app",  # Replace with your production domain
+]
+
+# Add CORSMiddleware to the app
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allows the specific origins to access the server
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "OPTIONS"],  # Allow only certain methods
+    allow_headers=["Content-Type", "Authorization"],  # Allow certain headers
+)
 
 # Daftar tipe model yang akan dimuat
 MODEL_TYPES = ["bone", "digestive", "skin", "general"]
