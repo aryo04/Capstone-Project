@@ -46,7 +46,12 @@ def predict_disease(request: Symptoms):
         raise HTTPException(500, f"Model untuk tipe '{request.model_type}' tidak tersedia.")
     if not request.symptoms:
         raise HTTPException(400, "Gejala harus diisi terlebih dahulu")
-
+    if len(request.symptoms) < 2:
+        return {
+        "prediction": "Tidak ada penyakit",
+        "description": "-",
+        "precautions": ["-"]
+    }
     # Memvalidasi gejala input sesuai daftar gejala model
     invalid = [s for s in request.symptoms if s not in model_map[request.model_type]["symptom_keys"]]
     if invalid:
