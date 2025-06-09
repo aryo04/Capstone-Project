@@ -53,7 +53,7 @@ class Symptoms(BaseModel):
 # Endpoint utama untuk cek API hidup
 @app.get("/")
 def home():
-    return {"message": "Yeyy!!! Berhasil terhubung ke API Prediksi Penyakit"}
+    return {"message": "Berhasil Terhubung..."}
 
 # Endpoint prediksi penyakit berdasarkan input gejala dan tipe model
 @app.post("/predict")
