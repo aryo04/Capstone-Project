@@ -15,7 +15,7 @@
 | `bone`       | Prediksi penyakit tulang dan sendi                       |
 | `digestive`  | Prediksi gangguan sistem pencernaan                      |
 | `general`    | Prediksi gejala ringan umum                              |
-| `skin`       | Prediksi penyakit kulit seperti ruam, infeksi, dll.      |
+| `skin`       | Prediksi penyakit kulit seperti ruam, infeksi            |
 
 ---
 
