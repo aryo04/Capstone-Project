@@ -9,11 +9,13 @@
 ---
 
 ## Fitur
-- Prediksi penyakit tulang
-- Prediksi penyakit kulit 
-- Prediksi penyakit pencernaan 
-- Prediksi penyakit umum 
-- Memiliki Endpoint tunggal, yaitu `/predict` dengan parameter `model_type` untuk memilih model yang digunakan.
+| model\_type | Deskripsi Model                                         |
+| ----------- | ------------------------------------------------------- |
+| `bone`      | Untuk prediksi penyakit tulang dan sendi                |
+| `digestive` | Untuk prediksi gangguan sistem pencernaan               |
+| `general`   | Model umum untuk berbagai gejala ringan                 |
+| `skin`      | Untuk prediksi penyakit kulit seperti ruam atau infeksi |
+
 
 ---
 
@@ -29,6 +31,28 @@
   
 ---
 ## Cara penggunaan
-Model machine learning  telah dideploy menggunakan **Railway** dan dapat digunakan untuk memprediksi penyakit berdasarkan dalam Bahasa Indonesia. Model prediksi dijalankan melalui endpoint `/predict` yang tersedia secara publik.
+Model machine learning telah dideploy menggunakan **Railway** dan dapat digunakan untuk memprediksi penyakit berdasarkan dalam Bahasa Indonesia dan menerima hasil prediksi penyakit berdasarkan model yang dipilih. Setiap model memiliki daftar gejala yang berbeda. Untuk melihat gejala yang tersedia untuk masing-masing model, buka file JSON di dalam folder:
 
+```
+models/<model_type>/<model_type>_symptoms.json
+```
+
+### Menggunakan Postman
+
+1. Buka aplikasi Postman
+2. Pilih method `POST`
+3. Masukkan URL:
+   ```
+   https://capstone-project-production-0852.up.railway.app/predict
+   ```
+4. Buka tab Body → pilih raw → ubah format ke JSON
+5. Sebagai contoh untuk bone, masukkan data seperti berikut:
+   ```
+   {
+    "symptoms": ["Nyeri punggung", "Nyeri lutut"],
+    "model_type": "bone"
+   }
+   ```
+6. Klik Send   
+      
 
