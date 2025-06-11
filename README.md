@@ -12,10 +12,10 @@
 
 | `model_type` | Deskripsi Model                                          |
 |--------------|----------------------------------------------------------|
-| `bone`       | Prediksi penyakit tulang dan sendi                       |
+| `bone`       | Prediksi penyakit tulang                                 |
 | `digestive`  | Prediksi gangguan sistem pencernaan                      |
 | `general`    | Prediksi gejala ringan umum                              |
-| `skin`       | Prediksi penyakit kulit seperti ruam, infeksi            |
+| `skin`       | Prediksi penyakit kulit                                  |
 
 ---
 
