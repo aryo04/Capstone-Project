@@ -107,8 +107,7 @@ DiagnoSmartML/
   ```
   models/<model_type>/<model_type>_symptoms.json
   ```
-  Lalu :
-  Gunakan method `POST` dengan contoh response `JSON` :
+  Lalu, gunakan method `POST` dengan contoh response `JSON` :
   ```
   {
   "symptoms": ["<isi gejala>", "<isi gejala>"],
