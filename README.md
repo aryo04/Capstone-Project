@@ -31,7 +31,7 @@
   
 ---
 ## Cara penggunaan
-Model machine learning telah dideploy menggunakan **Railway** dan dapat digunakan untuk memprediksi penyakit berdasarkan dalam Bahasa Indonesia dan menerima hasil prediksi penyakit berdasarkan model yang dipilih. Setiap model memiliki daftar gejala yang berbeda. Untuk melihat gejala yang tersedia untuk masing-masing model, buka file JSON di dalam folder:
+Model machine learning dideploy menggunakan **Railway** dan dapat digunakan untuk memprediksi penyakit berdasarkan gejala dalam Bahasa Indonesia dan menerima hasil prediksi penyakit berdasarkan model yang dipilih. Setiap model memiliki daftar gejala yang berbeda. Untuk melihat gejala yang tersedia untuk masing-masing model, buka file JSON di dalam folder:
 
 ```
 models/<model_type>/<model_type>_symptoms.json
