@@ -24,11 +24,10 @@
 - **Python**: Bahasa pemrograman utama
 - **NumPy**: Pemrosesan data input gejala
 - **Pandas**: Manipulasi dan analisis data
-- **TensorFlow / Keras**: Untuk pembuatan dan pelatihan model ML
+- **TensorFlow & Keras**: Untuk pembuatan dan pelatihan model ML
 - **FastAPI**: Framework API modern
-- **Railway**: Platform hosting backend
+- **Railway**: Platform hosting
 - **Docker**: Containerisasi aplikasi
-- **Postman**: Untuk pengujian endpoint
 
 ---
 
