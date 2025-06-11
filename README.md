@@ -28,10 +28,34 @@
 - **FastAPI**: Framework untuk membangun API.
 - **Railway**: Untuk deploy model.
 - **Docker**: Untuk containerisasi aplikasi.
-  
+
+---
+
+## 📁 Struktur Folder Penting
+
+```plaintext
+models/
+├── bone/
+│   ├── bone_disease_model.h5
+│   ├── bone_label_encoder.pkl
+│   └── bone_symptoms.json
+├── digestive/
+│   ├── digestive_disease_model.h5
+│   ├── digestive_label_encoder.pkl
+│   └── digestive_symptoms.json
+├── general/
+│   ├── general_disease_model.h5
+│   ├── general_label_encoder.pkl
+│   └── general_symptoms.json
+├── skin/
+│   ├── skin_disease_model.h5
+│   ├── skin_label_encoder.pkl
+│   └── skin_symptoms.json
+```
+
 ---
 ## Cara penggunaan
-Model machine learning dideploy menggunakan **Railway** dan dapat digunakan untuk memprediksi penyakit berdasarkan gejala dalam Bahasa Indonesia dan menerima hasil prediksi penyakit berdasarkan model yang dipilih. Setiap model memiliki daftar gejala yang berbeda. Untuk melihat gejala yang tersedia untuk masing-masing model, buka file JSON di dalam folder:
+Model machine learning dideploy menggunakan **Railway** dan dapat digunakan untuk memprediksi penyakit berdasarkan gejala dalam Bahasa Indonesia serta menerima hasil prediksi penyakit berdasarkan model yang dipilih. Setiap model memiliki daftar gejala yang berbeda, untuk melihat gejala yang tersedia untuk masing-masing model, buka file JSON di dalam folder:
 
 ```
 models/<model_type>/<model_type>_symptoms.json
