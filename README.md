@@ -77,6 +77,48 @@ DiagnoSmartML/
 ```
 
 ---
+## Menjalankan Secara Lokal
+1. Clone Repository
+  ```
+  git clone https://github.com/username/DiagnoSmartML.git
+  cd DiagnoSmartML
+  ```
+2. Membuat dan Aktifkan Virtual Environment
+  ```
+  python -m venv venv
+  # Windows
+  venv\Scripts\activate
+  # macOS/Linux
+  source venv/bin/activate
+  ```
+3. Install Dependency
+  ```
+  pip install -r requirements.txt
+  ```
+4. Menjalankan Program
+  ```
+  uvicorn main:app --reload
+  ```
+5. Endpoint
+  ```
+  http://127.0.0.1:8000/predict
+  ```
+  Setiap model memiliki daftar gejala yang berbeda, untuk melihat gejala yang tersedia untuk masing-masing model, buka file JSON di dalam        folder:
+  ```
+  models/<model_type>/<model_type>_symptoms.json
+  ```
+  Lalu :
+  Gunakan method `POST` dengan contoh response `JSON` :
+  ```
+  {
+  "symptoms": ["<isi gejala>", "<isi gejala>"],
+  "model_type": "<pilih penyakitnya>"
+  }
+  ``` 
+
+---
+
+---
 ## 🌐 Cara Penggunaan API
 Model machine learning dideploy menggunakan **Railway** dan dapat digunakan untuk memprediksi penyakit berdasarkan gejala dalam Bahasa Indonesia serta menerima hasil prediksi penyakit berdasarkan model yang dipilih. Setiap model memiliki daftar gejala yang berbeda, untuk melihat gejala yang tersedia untuk masing-masing model, buka file JSON di dalam folder:
 
