@@ -74,7 +74,11 @@ DiagnoSmartML/
 │
 ├── data/
 │   ├── symptom_description.csv
-│   └── symptom_precaution.csv
+│   ├── symptom_precaution.csv
+│   ├── penyakitkulit.csv
+│   ├── penyakitpencernaan.csv
+│   ├── penyakittulang.csv
+│   └── penyakitumum.csv
 │
 ├── models/
 │   ├── bone/
