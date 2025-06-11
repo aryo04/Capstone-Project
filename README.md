@@ -77,7 +77,7 @@ DiagnoSmartML/
 ```
 
 ---
-## 🌐 Cara Penggunaan
+## 🌐 Cara Penggunaan API
 Model machine learning dideploy menggunakan **Railway** dan dapat digunakan untuk memprediksi penyakit berdasarkan gejala dalam Bahasa Indonesia serta menerima hasil prediksi penyakit berdasarkan model yang dipilih. Setiap model memiliki daftar gejala yang berbeda, untuk melihat gejala yang tersedia untuk masing-masing model, buka file JSON di dalam folder:
 
 ```
